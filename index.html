@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Study Progress Tracker</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <!-- Link your CSS here or include a <style> block separately -->
+</head>
+<body>
+  <div class="outer">
+    <div class="plan">
+      <div class="plan-title">
+        <span class="badge">My progress</span>
+        <span class="subtitle">Progress tracker</span>
+      </div>
+
+      <div class="analytics" id="analyticsBar"></div>
+
+      <div class="week-header">
+        <div class="left-stack">
+          <div class="chev">
+            <button class="nav-btn" id="prevWeek" aria-label="Previous week">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg>
+            </button>
+            <button class="nav-btn" id="nextWeek" aria-label="Next week">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+          <div class="week-pill" id="weekRange">Week</div>
+        </div>
+
+        <div class="tools">
+          <div class="date-wrap">
+            <span class="date-hint">today</span>
+            <input class="input" type="date" id="datePicker" />
+          </div>
+        </div>
+      </div>
+
+      <div class="week-grid" id="weekGrid" aria-live="polite"></div>
+      <div class="legend">
+        <span class="pill">Click a square to toggle progress</span>
+        <span class="pill">Default per day is 1</span>
+        <span class="pill">Use the note button to edit tasks/day</span>
+        <span class="pill">Use the note button to edit tasks/day</span>
+      </div>
+    </div>
+
+    <div class="details">
+      <div class="card">
+        <h4 id="tasksTitle">Tasks · </h4>
+        <div id="taskList" class="task-list"></div>
+      </div>
+
+      <div class="card">
+        <h4>Other notes</h4>
+        <textarea id="freeNote" class="note-area" placeholder="Write anything for the selected day..."></textarea>
+      </div>
+
+      <div class="card">
+        <div class="deadline-mini" id="deadlineDisplay" tabindex="0">
+          <div class="deadline-mini-head"><span class="spark">✨</span><span class="label">Deadline</span></div>
+          <div id="deadlineCountdown" class="deadline-mini-big" data-deadline-open>No deadline set</div>
+          <div id="deadlineMsg" class="deadline-mini-sub" data-deadline-open>Click to choose a date</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="month-graph" id="monthGraph">
+      <div class="mg-head">
+        <div class="mg-title" id="mgTitle">Month</div>
+        <div class="mg-legend">
+          <span class="swatch done"></span> Completed ·
+          <span class="swatch empty"></span> No plan
+        </div>
+      </div>
+      <canvas id="mgCanvas" width="1200" height="220" aria-label="Monthly progress chart"></canvas>
+    </div>
+  </div>
+
+  <!-- Notes + Tasks/day modal -->
+  <div class="modal-back" id="notesBack">
+    <div class="modal">
+      <h3 id="notesTitle">Day editor</h3>
+      <div class="grid">
+        <label for="modalTasks">Tasks/day</label>
+        <input id="modalTasks" type="number" min="0" max="48" step="1" />
+      </div>
+      <div style="margin-top:10px">
+        <div class="small">Quick note</div>
+        <textarea id="notesText" placeholder="Write a quick note for this day..."></textarea>
+      </div>
+      <div class="row">
+        <button class="btn ghost" id="notesCancel">Close</button>
+        <button class="btn primary" id="notesSave">Save</button>
+      </div>
+      <div class="small" style="margin-top:8px">Tasks/day changes apply to this day only</div>
+    </div>
+  </div>
+
+  <!-- Deadline modal -->
+  <div class="modal-back" id="deadlineBack">
+    <div class="modal">
+      <h3>Set Deadline</h3>
+      <div class="grid" style="grid-template-columns: 120px 1fr;">
+        <label for="deadlinePicker">Deadline date</label>
+        <input id="deadlinePicker" type="date" />
+      </div>
+      <div class="row" style="margin-top:10px">
+        <button class="btn ghost" id="deadlineCancel">Cancel</button>
+        <button class="btn primary" id="deadlineSave">Save</button>
+        <button class="btn" id="deadlineRemove" style="background:#0d1722;border:1px solid #444;color:#e08b8b">Clear</button>
+      </div>
+      <div class="small" style="margin-top:8px">The dashboard shows only the remaining days; settings live here.</div>
+    </div>
+  </div>
+
+  <!-- Weekly review modal -->
+  <div class="modal-back" id="reviewBack">
+    <div class="modal">
+      <h3>Weekly Review</h3>
+      <div class="small">Reflect on last week to improve next week’s plan.</div>
+      <div style="margin-top:10px">
+        <div class="small">What went well?</div>
+        <textarea id="revQ1" placeholder="Wins, habits, consistency..."></textarea>
+      </div>
+      <div style="margin-top:10px">
+        <div class="small">What was hard?</div>
+        <textarea id="revQ2" placeholder="Blocks, time sinks, distractions..."></textarea>
+      </div>
+      <div style="margin-top:10px">
+        <div class="small">One improvement for next week</div>
+        <textarea id="revQ3" placeholder="The single highest-leverage change..."></textarea>
+      </div>
+      <div class="row" style="margin-top:12px">
+        <button class="btn ghost" id="revCancel">Close</button>
+        <button class="btn primary" id="revSave">Save review</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <!-- Link your JS after CSS is in place -->
+</body>
+</html>
