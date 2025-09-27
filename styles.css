@@ -1,17 +1,20 @@
 :root{
   --container-max: 1100px;
+
   --radius-xl: 999px;
   --radius-lg: 16px;
   --radius-md: 12px;
   --radius-sm: 8px;
+
   --shadow-1: 0 10px 30px rgba(4, 6, 15, 0.45);
 
-  --day-box-size: 14px;
-  --day-box-gap: 7px;
+  --day-box-size: 17px;
+  --day-box-gap: 3px;
   --day-card-minwidth: 130px;
 
   --bg: #0b0f16;
   --bg-gradient: radial-gradient(1200px 600px at 20% 0%, #0d1524 0%, #0b0f16 40%, #0a0d13 100%);
+
   --panel: rgba(19, 24, 35, 0.72);
   --panel-border: rgba(64, 76, 100, 0.34);
   --panel-2: rgba(16, 21, 32, 0.7);
@@ -19,10 +22,13 @@
 
   --grid-off: #0f1826;
   --grid-border: #2a394e;
-  --grid-checked-1: #0e4429;
-  --grid-checked-2: #006d32;
-  --grid-checked-3: #26a641;
-  --grid-checked-4: #39d353;
+
+  --grid-checked-1: #002d16;
+  --grid-checked-2: #04471c;
+  --grid-checked-3: #006401;
+  --grid-checked-4: #0a9548;
+  --grid-checked-5: #16db65; 
+
 
   --text: #dce6f4;
   --muted: #a6b2c8;
@@ -30,8 +36,8 @@
 
   --ctrl-bg: #0f1828;
   --ctrl-br: #2a394e;
-  --brand-1: #22d3ee;
-  --brand-2: #60a5fa;
+  --brand-1: #00d9ffa7;
+  --brand-2: #0091ffaf;
 
   --chev-bg: #151d2b;
   --chev-br: #2a394e;
@@ -45,15 +51,15 @@
   --chip-br: #2a394e;
   --chip-text: #dce6f4;
 
-  --danger-soft: rgba(239, 68, 68, .26);
-  --danger-br: rgba(239, 68, 68, .35);
+  --danger-soft: rgba(239, 150, 68, .07);
+  --danger-br: rgba(239, 150, 68, .1);
 
   --modal-bg: rgba(11,15,22,0.72);
   --modal-panel: #0f1826;
   --modal-br: #223047;
 }
 
-/* Older status colors for analytics chips */
+/* Analytics value colors */
 .value.good{ color:#26a641 }
 .value.ok{   color:#d29922 }
 .value.bad{  color:#f85149 }
@@ -89,22 +95,16 @@ body{
   content:"";
   position:absolute; inset:-1px;
   background:
-    radial-gradient(420px 200px at 88% -8%, rgba(96,165,250,0.16), transparent 70%),   /* top-right */
-    radial-gradient(420px 200px at 12% 108%, rgba(34,197,94,0.10), transparent 70%),  /* bottom-left */
-    radial-gradient(420px 200px at 88% 108%, rgba(139,92,246,0.10), transparent 70%); /* bottom-right */
+    radial-gradient(420px 200px at 88% -8%, rgba(96,165,250,0.16), transparent 70%),
+    radial-gradient(420px 200px at 12% 108%, rgba(34,197,94,0.10), transparent 70%),
+    radial-gradient(420px 200px at 88% 108%, rgba(139,92,246,0.10), transparent 70%);
   filter: none;
   pointer-events:none;
   animation: none;
   opacity:1;
 }
 
-/* (Removed gradients from .day, .card, .chip, and .box per request) */
-@keyframes aurora{
-  0%{ transform: translateY(0) }
-  50%{ transform: translateY(6px) }
-  100%{ transform: translateY(-4px) }
-}
-
+/* Plan header */
 .plan-title{ display:flex; align-items:center; gap:12px; margin-bottom:12px }
 .badge{
   padding:6px 12px; border-radius:999px; font-weight:700; letter-spacing:.25px; font-size:12.5px;
@@ -113,6 +113,7 @@ body{
 }
 .subtitle{ color:var(--muted); font-size:13px }
 
+/* Analytics chips */
 .analytics{ display:flex; flex-wrap:wrap; gap:10px; margin:10px 0 6px }
 .chip{
   display:flex; align-items:center; gap:10px;
@@ -127,6 +128,7 @@ body{
 .chip .label{ font-size:12px; color: var(--muted) }
 .chip .value{ font-weight:900; letter-spacing:.3px }
 
+/* Week header */
 .week-header{
   position: sticky; top: 8px; z-index: 10;
   display:grid; grid-template-columns: 1fr auto;
@@ -136,7 +138,6 @@ body{
   border:1px solid rgba(99,102,241,0.18);
   backdrop-filter: blur(8px) saturate(125%);
 }
-
 .left-stack{ display:flex; align-items:center; gap:12px }
 .chev{
   display:flex; gap:6px; align-items:center;
@@ -165,6 +166,7 @@ body{
   text-shadow: 0 1px 0 rgba(0,0,0,0.35); white-space: nowrap;
 }
 
+/* Tools */
 .tools{ display:flex; gap:10px; align-items:center; justify-content:flex-end; flex-wrap:wrap }
 .input{
   background: var(--ctrl-bg); color:var(--text); border:1px solid var(--ctrl-br);
@@ -174,12 +176,12 @@ body{
   transition: border-color .12s ease, box-shadow .12s ease;
 }
 .input:focus{ outline:none; border-color: rgba(94,234,212,.55); box-shadow: 0 0 0 3px rgba(94,234,212,.12) }
-
 .date-wrap{ position:relative; display:flex; align-items:center }
 .date-hint{ position:absolute; left:10px; top:50%; transform:translateY(-50%); font-size:11px; color:#8ea0ba; pointer-events:none }
 .date-wrap .input{ padding-left:50px }
-input[type="date"]::-webkit-calendar-picker-indicator{ filter: invert(1) brightness(1.2) contrast(1.1); opacity:.9 }
+input[type="date"]::-webkit-calendar-picker-indicator{ color: transparent; border-radius: 8px; filter: none; opacity: 1; }
 
+/* Week grid and day cards */
 .week-grid{ margin-top:14px; display:grid; gap:12px; grid-template-columns: repeat(7, minmax(var(--day-card-minwidth), 1fr)) }
 .day{
   background: linear-gradient(180deg, #0e1627, #0d1526 70%, #0c1322);
@@ -196,14 +198,14 @@ input[type="date"]::-webkit-calendar-picker-indicator{ filter: invert(1) brightn
 .day-name{ font-weight:900; color:var(--text); font-size:11.5px; letter-spacing:.35px; text-transform:uppercase }
 .day-date{ color:var(--muted); font-size:10px }
 
-.note-btn{ appearance:none; border:none; background:#0e1727; color:#c9d6ea; border:1px solid #223044; height:26px; border-radius:8px; display:flex; align-items:center; gap:6px; cursor:pointer; font-size:12px; padding:0 8px; transition: filter .12s ease, transform .06s ease }
+.note-btn{ appearance:none; border:none; background:#0e1727; color:#c9d6ea; height:26px; border-radius:8px; display:flex; align-items:center; gap:6px; cursor:pointer; font-size:12px; padding:0 8px; transition: filter .12s ease, transform .06s ease }
 .note-btn:hover{ filter:brightness(1.1) } .note-btn:active{ transform: translateY(1px) }
 
 .note-dot{ position:absolute; top:8px; right:8px; width:6px; height:6px; border-radius:50%; background:#22c55e; display:none }
-.day.has-note .note-dot{ display:block }
+.day.has-note .note-dot{ display:block !important }
 
 .day-tools{ display:flex; gap:8px; align-items:center; flex-wrap:wrap }
-.mini-btn{ background:#0e1727; color:#cfe0f6; border:1px solid #223044; border-radius:8px; padding:4px 8px; font-size:8px; cursor:pointer }
+.mini-btn{ background:#0e1727; color:#cfe0f6; border:0px solid #223044; border-radius:8px; padding:4px 8px; font-size:8px; cursor:pointer }
 .mini-btn:hover{ filter:brightness(1.1) }
 
 .lecture-wrap{ display:grid; grid-template-columns: repeat(5, var(--day-box-size)); grid-auto-rows: var(--day-box-size); gap: var(--day-box-gap); justify-content:flex-start; align-content:start; min-height: calc(var(--day-box-size) + var(--day-box-gap)) }
@@ -222,15 +224,21 @@ input[type="date"]::-webkit-calendar-picker-indicator{ filter: invert(1) brightn
 .box.checked.level2{ background: var(--grid-checked-2); border-color: transparent }
 .box.checked.level3{ background: var(--grid-checked-3); border-color: transparent }
 .box.checked.level4{ background: var(--grid-checked-4); border-color: transparent }
+.box.checked.level5{ background: var(--grid-checked-5); border-color: transparent }
+
 
 .day.selected{
-  outline:2px solid rgba(94,234,212,0.65);
-  box-shadow: 0 0 0 3px rgba(94,234,212,0.12) inset, 0 8px 28px rgba(2,8,23,.35);
+  outline:2px solid rgba(94,234,212,0);
+  box-shadow: 0 0 0 1px rgba(94,234,212,0.2) inset, 0 8px 28px rgba(2,8,23,2);
 }
 
-.day.missed{ box-shadow: 0 0 0 2px var(--danger-soft) inset; border-color: var(--danger-br) }
+.day.missed{ box-shadow: 0 0 0 1px var(--danger-soft) inset; border-color: var(--danger-br) }
 .day.rest{ opacity:.85 }
 
+
+
+
+/* Legend under week grid */
 .legend{ margin-top:14px; color:var(--muted); font-size:13px; display:flex; gap:14px; align-items:center; flex-wrap:wrap }
 .pill{ padding:6px 10px; border-radius:999px; border:1px solid #2a394e; background:#0f1828; color:var(--muted-2) }
 
@@ -239,6 +247,65 @@ input[type="date"]::-webkit-calendar-picker-indicator{ filter: invert(1) brightn
   display:grid; grid-template-columns: repeat(3, 1fr); gap:12px;
   margin:16px auto 0; max-width: var(--container-max);
 }
+
+
+.plan-top{ margin-bottom:12px }
+.plan-top, .plan-bottom{ padding:12px }
+.plan-top .card, .plan-bottom .card{ background:none; border:none; box-shadow:none; padding:0 } /* prevents nested-card double styling */
+
+
+
+
+
+/* Enhanced styling for functional task box indicators */
+.box-indicator {
+  width: 14px;
+  height: 14px;
+  border: 1px solid #2a394e;
+  border-radius: 3px;
+  background: #0f1826;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.box-indicator:hover {
+  filter: brightness(1.2);
+  transform: scale(1.1);
+}
+
+.box-indicator.completed {
+  background: #26a641 !important;
+  border-color: transparent !important;
+}
+
+.box-indicator.completed::after {
+  content: '✓';
+  color: rgba(255, 255, 255, 0.744);
+  font-size: 10px;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1;
+}
+
+.box-indicator:not(.completed):hover {
+  background: rgba(38, 166, 65, 0.2);
+  border-color: rgba(38, 166, 65, 0.4);
+}
+
+.task-row:hover .box-indicator {
+  box-shadow: 0 0 8px rgba(38, 166, 65, 0.3);
+}
+
+
+
+
+
+
+
 .card{
   background: linear-gradient(180deg, rgba(14,22,37,0.8), rgba(12,19,31,0.88));
   border:1px solid rgba(99,102,241,0.16);
@@ -250,42 +317,37 @@ input[type="date"]::-webkit-calendar-picker-indicator{ filter: invert(1) brightn
   box-shadow: 0 16px 36px rgba(2,8,23,0.5);
   border-color: rgba(99,102,241,0.26);
 }
-
 .card h4{ margin:0 0 10px; font-size:14px; color:#e7f0ff; letter-spacing:.3px }
+
 .task-list{ display:flex; flex-direction:column; gap:8px }
 .task-row{ display:grid; grid-template-columns: 18px 1fr; gap:8px; align-items:center }
-.task-row .box-indicator{ width:14px; height:14px; border:1px solid #2a394e; border-radius:3px; background:#0f1826 }
+.task-row .box-indicator{ width:17px; height:17px; border:1px solid #2a394e; border-radius:3px; background:#0f1826 }
 .task-input{ width:100%; padding:8px 10px; border-radius:10px; border:1px solid #2a394e; background:#0e1626; color:var(--text); font-size:13px }
 .note-area{ width:100%; min-height:140px; resize:vertical; background:#0e1626; color:var(--text); border:1px solid #2a394e; border-radius:10px; padding:10px; font-size:13px }
-
-.deadline-card{ cursor:default }
-.deadline-big{ font-size:22px; font-weight:800; margin-bottom:6px }
-.deadline-sub{ color:#8ea0ba; font-size:13px }
 
 /* Compact deadline variant embedded in notes card */
 .deadline-mini{
   margin-bottom:8px;
-  padding:8px 10px;
-  border:1px solid rgba(99,102,241,0.18);
-  border-radius:10px;
-  background: #0f1a2a;
+  
 }
-.deadline-mini-head{ display:flex; align-items:center; gap:8px; margin-bottom:6px; color:#cfe0f6; font-weight:800; letter-spacing:.3px; font-size:12px }
+
+
+
+
+.deadline-mini-head{ display:flex; align-items:center; gap:8px; margin-bottom:6px; color:#cfe0f6; font-weight:800; letter-spacing:.3px; font-size:14px }
 .deadline-mini-head .spark{ filter: drop-shadow(0 0 4px rgba(94,234,212,0.5)) }
 .deadline-mini-head .label{ opacity:.9 }
 .deadline-mini-big{ font-size:14px; font-weight:800; margin:0 0 4px }
 .deadline-mini-sub{ color:#8ea0ba; font-size:12px }
 
 /* Make only these elements appear clickable for settings */
-.deadline-big[data-deadline-open],
-.deadline-sub[data-deadline-open],
 .deadline-mini-big[data-deadline-open],
 .deadline-mini-sub[data-deadline-open]{ cursor:pointer }
 
 /* Deadline notes box */
 .deadline-note-box{
   width:100%;
-  min-height:90px;
+  min-height:190px;
   resize:vertical;
   margin-top:8px;
   padding:10px;
@@ -305,26 +367,131 @@ input[type="date"]::-webkit-calendar-picker-indicator{ filter: invert(1) brightn
 /* Modal base */
 .modal-back{ position:fixed; inset:0; background:var(--modal-bg); display:none; align-items:center; justify-content:center; z-index:1000 }
 .modal{ width:min(680px, 92vw); background:var(--modal-panel); border:1px solid var(--modal-br); border-radius:16px; padding:16px; box-shadow:0 20px 60px rgba(0,0,0,0.5) }
-.modal h3{ margin:0 0 8px; font-size:16px }
+.modal h3{ margin:0 0 8px; font-size:16px; }
+#q { font-weight: 200; font-size:1em;}
 .modal textarea{ width:100%; min-height:120px; resize:vertical; background:#0c1524; border:1px solid #223044; color:var(--text); border-radius:10px; padding:10px; font-size:14px }
 .modal .row{ display:flex; gap:10px; margin-top:10px; flex-wrap:wrap }
 .btn{ appearance:none; border:none; cursor:pointer; border-radius:10px; padding:8px 12px; font-weight:700 }
-.btn.primary{ background:linear-gradient(135deg, var(--brand-1), var(--brand-2)); color:#041019; border:1px solid rgba(61,211,134,0.45) }
+.btn.primary{ background:transparent; color:#ffffff; border:1px solid rgba(111, 111, 111, 0.324) }
 .btn.ghost{ background:#0e1727; color:#cdd7e6; border:1px solid #223044 }
 
 .modal .small{ font-size:12px; color:var(--muted) }
 .modal .grid{ display:grid; grid-template-columns: 120px 1fr; gap:10px; align-items:center; margin-top:10px }
 .modal input[type="number"], .modal input[type="date"]{ width:100%; padding:8px 10px; border-radius:10px; border:1px solid #223044; background:#0c1524; color:#e6eefb; font-weight:700; text-align:center }
 
-.month-graph{ margin:16px auto 0; max-width: var(--container-max); background: rgba(19,24,35,0.72); border:1px solid rgba(64,76,100,0.34); border-radius:16px; padding:12px 14px 16px }
-.mg-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:8px }
-.mg-title{ font-weight:900; letter-spacing:.3px }
+/* Two‑month compact Month card (heatmap) */
+#monthCard h4{ margin-bottom:6px }
+#monthCard .mg-legend{ margin-bottom:10px }
 .mg-legend{ color:var(--muted); font-size:12px; display:flex; align-items:center; gap:10px }
-.swatch{ display:inline-block; width:12px; height:10px; border-radius:3px }
+.swatch{ display:inline-block; width:13px; height:12px; border-radius:3px }
 .swatch.done{ background:#26a641 }
 .swatch.empty{ background:#263244 }
-#mgCanvas{ width:100%; height:220px; display:block }
+#monthCard{
+  padding-left: 20px;
+  max-width: none;
+  width: 100%;
+}
 
+.month-head{
+  display:grid;
+  grid-template-columns: repeat(7, 18px);
+  column-gap: 9px;
+  padding-left: 8px;
+  padding-top: 9px;
+  margin-bottom: 6px;
+  color: var(--muted-2);
+  font-size: 10px;
+  line-height: 1;
+  user-select: none;
+}
+.month-head .weekday{ width:18px; text-align:left }
+
+.month-heatmap{
+  display:grid;
+  grid-auto-flow: row;
+  grid-auto-rows: max-content;
+  padding-left: 8px;
+  row-gap: 4px;
+}
+
+.mh-row{
+  display:grid;
+  grid-template-columns: repeat(7, 18px) 56px;
+  column-gap: 8px;
+  align-items:center;
+}
+.mh-row-label-right{
+  color: var(--muted-2);
+  font-size: 12px;
+  line-height: 1;
+  white-space: nowrap;
+  text-align: left;
+  user-select: none;
+  padding-left: 10px;
+}
+
+.mh-cell{
+  width:22px; height:19px;
+  border-radius:3px;
+  border:1px solid var(--grid-border);
+  background:#263244;
+  position:relative;
+  display:grid; place-items:center;
+  overflow:hidden;
+}
+.mh-cell.level1{ background:var(--grid-checked-1); border-color:transparent }
+.mh-cell.level2{ background:var(--grid-checked-2); border-color:transparent }
+.mh-cell.level3{ background:var(--grid-checked-3); border-color:transparent }
+.mh-cell.level4{ background:var(--grid-checked-4); border-color:transparent }
+.mh-cell.level5{ background:var(--grid-checked-5); border-color: transparent}
+
+.mh-cell .date{
+  position:absolute; bottom:1px; right:2px;
+  font-size:7px; line-height:1;
+  color:rgba(255,255,255,0.35);
+  text-shadow:0 1px 0 rgba(0,0,0,0.35);
+  pointer-events:none;
+}
+
+.mh-cell:hover{ filter: brightness(1.08) }
+.mh-cell:focus-visible{
+  outline:2px solid rgba(94,234,212,0.65);
+  outline-offset:2px;
+}
+
+/* Shared focus states */
+.nav-btn:focus-visible,
+.mini-btn:focus-visible,
+.note-btn:focus-visible,
+.btn:focus-visible,
+.input:focus-visible,
+.box:focus-visible {
+  outline:2px solid rgba(94,234,212,0.65);
+  outline-offset:2px;
+}
+
+
+/* Today highlighting */
+.day.today {
+  position: relative;
+}
+
+.day.today::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(135deg, 
+    #a3856956 0%, 
+    #a3856015 100%);
+  border-radius: 12px;
+  pointer-events: none;
+  opacity: 0.6;
+  z-index: 1;
+}
+
+
+
+/* Responsive */
 @media (max-width: 980px){ .details{ grid-template-columns: repeat(2, 1fr) } }
 @media (max-width: 680px){
   .week-header{ grid-template-columns: 1fr; row-gap:10px }
@@ -333,3 +500,10 @@ input[type="date"]::-webkit-calendar-picker-indicator{ filter: invert(1) brightn
   .input{ min-width: 160px }
   .details{ grid-template-columns: 1fr }
 }
+
+
+
+
+
+
+
