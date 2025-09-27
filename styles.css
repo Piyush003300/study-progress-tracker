@@ -505,4 +505,40 @@ input[type="date"]::-webkit-calendar-picker-indicator{ color: transparent; borde
 
 
 
+/* Horizontal scroll for 7-day row */
+.week-grid{
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(7, minmax(var(--day-card-minwidth), 1fr));
+  gap: 12px;
+  overflow-x: auto;
+  overflow-y: visible;
+  -webkit-overflow-scrolling: touch;     /* smooth on iOS */
+  scroll-snap-type: x proximity;         /* nicer snapping */
+  padding-bottom: 8px;                   /* room for scrollbar */
+}
+
+/* Each day snaps nicely */
+.week-grid .day{
+  scroll-snap-align: center;
+  min-width: var(--day-card-minwidth);
+}
+
+/* Make sure the container doesn’t clip sticky bits */
+.week-wrap, .week-section, .week-area{
+  overflow: visible;
+}
+
+/* Optional: thinner scrollbar on supported browsers */
+.week-grid::-webkit-scrollbar{height:8px}
+.week-grid::-webkit-scrollbar-thumb{background:#2a394e;border-radius:8px}
+.week-grid::-webkit-scrollbar-track{background:transparent}
+
+/* Mobile: keep scroll on narrow widths */
+@media (max-width: 680px){
+  .week-grid{
+    grid-template-columns: repeat(7, minmax(var(--day-card-minwidth), 1fr));
+    gap: 10px;
+  }
+}
 
