@@ -509,6 +509,22 @@ tools.appendChild(addBtn);
   updateDeadlineBox();
 }
 
+
+// Ensure today (or selected) is visible and centered in the horizontal scroller
+const grid = document.querySelector('.week-grid') || document.getElementById('weekGrid');
+if (grid) {
+  const target =
+    grid.querySelector('.day.today') ||
+    grid.querySelector('.day.selected');
+  if (target && typeof target.scrollIntoView === 'function') {
+    target.scrollIntoView({ behavior: 'auto', inline: 'center', block: 'nearest' });
+  }
+}
+
+}
+
+
+
 // ===== Notes modal =====
 function openNotesModal(ds){
   const settings = loadDaySettings(ds);
