@@ -1,44 +1,30 @@
 # study-progress-tracker
 
-Study Week Tracker
-A local-first weekly study planner to set daily tasks, tick off completions, jot notes, and track a compact deadline countdown, with lightweight analytics—no backend required.
+**Study Week Tracker**
+--> A local-first weekly study planner to set daily tasks, tick off completions, jot notes, and track a compact deadline countdown, with lightweight analytics—no backend required.
 
-Features
-Weekly grid with 7 day cards, sticky week header, and date navigation.
+**Features**
+--> Weekly grid with 7 day cards, sticky week header, and date navigation.
+--> Per-day plan: set lectures/tasks or mark as rest; saved per date in localStorage.
+--> One-click completion squares with clear completed state and hover affordance.
+--> Task titles per day with debounced saving; free-form daily note box.
+--> Compact deadline mini with days-left, today, or passed status, plus a dedicated note field.
+--> Analytics chips showing weekly completion and today’s status with good/ok/bad colors.
 
-Per-day plan: set lectures/tasks or mark as rest; saved per date in localStorage.
+**Use cases**
+--> Exam preparation planning, daily lecture tracking, weekly progress reviews, and lightweight deadline awareness without accounts.
 
-One-click completion squares with clear completed state and hover affordance.
+**Quick start**
+--> Open index.html in a modern browser (Chrome/Edge/Firefox/Safari) and start planning; no build or server needed.
+--> Navigate weeks from the sticky header, set per-day task count or rest, click squares to mark done, add titles and notes, and set a target deadline.
 
-Task titles per day with debounced saving; free-form daily note box.
+**Data persistence**
+--> Stored in localStorage with keys: tracker.settings.YYYY-MM-DD, tracker.YYYY-MM-DD.i, tracker.tasks.YYYY-MM-DD, tracker.freeNote.YYYY-MM-DD, tracker.deadline, tracker.deadline.notebox. Clearing storage resets data.
 
-Compact deadline mini with days-left, today, or passed status, plus a dedicated note field.
+**Tech stack**
+--> HTML for structure, CSS for dark glassy UI and responsive layout, vanilla JavaScript for state, rendering, and storage.
 
-Analytics chips showing weekly completion and today’s status with good/ok/bad colors.
-
-Use cases
-Exam preparation planning (GATE, semester study), daily lecture tracking, weekly progress reviews, and lightweight deadline awareness without accounts.
-
-Quick start
-Open index.html in a modern browser (Chrome/Edge/Firefox/Safari) and start planning; no build or server needed.
-
-Navigate weeks from the sticky header, set per-day task count or rest, click squares to mark done, add titles and notes, and set a target deadline.
-
-Data persistence
-Stored in localStorage with keys: tracker.settings.YYYY-MM-DD, tracker.YYYY-MM-DD.i, tracker.tasks.YYYY-MM-DD, tracker.freeNote.YYYY-MM-DD, tracker.deadline, tracker.deadline.notebox. Clearing storage resets data.
-
-Tech stack
-HTML for structure, CSS for dark glassy UI and responsive layout, vanilla JavaScript for state, rendering, and storage.
-
-Project structure
-index.html — App shell with header, week grid, analytics, details panel, and deadline mini.
-
-styles.css — Theme tokens, day cards, chips, focus-visible states, indicators, and responsive rules.
-
-script.js — Date utilities, localStorage facade, week rendering, task/notes logic, deadline countdown, and analytics wiring.
-
-Screenshots
-Add PNGs under screenshots/ and reference them in the README:
+**Screenshots**
 
 <img width="1425" height="188" alt="image" src="https://github.com/user-attachments/assets/40ab04a2-ff66-4a5a-a48f-d61cb6134ae7" />
 
