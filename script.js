@@ -507,7 +507,11 @@ tools.appendChild(addBtn);
   computeAndRenderAnalytics();
   // removed: renderMonthGraph(currentStart) legacy call
   updateDeadlineBox();
-}
+
+
+
+
+
 
 
 // Ensure today (or selected) is visible and centered in the horizontal scroller
@@ -522,8 +526,6 @@ if (grid) {
 }
 
 }
-
-
 
 // ===== Notes modal =====
 function openNotesModal(ds){
