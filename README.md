@@ -7,10 +7,15 @@
 **Features**
 
 --> Weekly grid with 7 day cards, sticky week header, and date navigation.
+
 --> Per-day plan: set lectures/tasks or mark as rest; saved per date in localStorage.
+
 --> One-click completion squares with clear completed state and hover affordance.
+
 --> Task titles per day with debounced saving; free-form daily note box.
+
 --> Compact deadline mini with days-left, today, or passed status, plus a dedicated note field.
+
 --> Analytics chips showing weekly completion and today’s status with good/ok/bad colors.
 
 **Use cases**
@@ -19,7 +24,9 @@
 
 **Quick start**
 
+
 --> Open index.html in a modern browser (Chrome/Edge/Firefox/Safari) and start planning; no build or server needed.
+
 --> Navigate weeks from the sticky header, set per-day task count or rest, click squares to mark done, add titles and notes, and set a target deadline.
 
 **Data persistence**
